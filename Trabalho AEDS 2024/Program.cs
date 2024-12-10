@@ -1,4 +1,9 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Trabalho_AEDS_2024
 {
@@ -48,8 +53,7 @@ namespace Trabalho_AEDS_2024
                             break;
                         }
 
-                        Carta cartaDaVez = mesa.MonteDeCompras[0];
-                        mesa.MonteDeCompras.RemoveAt(0);
+                        Carta cartaDaVez = mesa.MonteDeCompras.removerInicio();
 
                         Registrador.Escrever($"\nO jogador {jogadorAtual.Nome} retirou a carta {cartaDaVez.Nome} do Monte de Compras");
 
@@ -207,7 +211,6 @@ namespace Trabalho_AEDS_2024
         {
             List<int> jogadoresParaRoubar = new List<int>();
 
-            //Adicionar jogadores que tem a carta do topo igual ao jogador atual
             for (int i = 0; i < jogadores.Length; i++)
             {
                 if (jogadores[i] == jogadorAtual)
@@ -244,8 +247,6 @@ namespace Trabalho_AEDS_2024
             jogadorEscolhido.Monte.RemoveAt(0);
             return jogadorEscolhido;
         }
-
-        // Retorna o jogador que tem o maior monte dentre a lista de posições de jogadores
         public static Jogador JogadorComMaiorMonte(List<int> indexJogadores)
         {
             int posMaiorTamanho = 0;
@@ -260,7 +261,6 @@ namespace Trabalho_AEDS_2024
             return jogadores[indexJogadores[posMaiorTamanho]];
         }
 
-        // Retorna os jogadores que tem um monte com tamanho especifico dentre a lista de posições de jogadores
         public static List<Jogador> JogadoresComMontesDeTamanho(List<int> indexJogadores, int tamanho)
         {
             List<Jogador> resultado = new List<Jogador>();

@@ -88,7 +88,7 @@ namespace Trabalho_AEDS_2024
         }
         public static void NovaPartida(Jogador[] jogadores)
         {
-            string texto =  $"\n======== UMA NOVA PARTIDA ESTÁ INICIANDO ========\n\nJogadores da partida: ";
+            string texto = $"\n======== UMA NOVA PARTIDA ESTÁ INICIANDO ========\n\nJogadores da partida: ";
             for (int i = 0; i < jogadores.Length; i++)
             {
                 texto += $"{jogadores[i].Nome} ";

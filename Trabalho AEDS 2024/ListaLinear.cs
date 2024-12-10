@@ -9,7 +9,7 @@ namespace Trabalho_AEDS_2024
     internal class ListaLinear
     {
 
-        private Jogador[] array;
+        private Carta[] array;
         private int n;
 
         public int Count => n;
@@ -20,14 +20,14 @@ namespace Trabalho_AEDS_2024
         }
         private void inicializar(int tamanho)
         {
-            array = new Jogador[tamanho];
+            array = new Carta[tamanho];
             n = 0;
         }
-        public void inserirInicio(Jogador x)
+        public void inserirInicio(Carta x)
         {
             if (n >= array.Length)
                 throw new Exception("Lista está cheia!");
-            //levarelementosparaofimdoarray
+
             for (int i = n; i > 0; i--)
             {
                 array[i] = array[i - 1];
@@ -35,14 +35,14 @@ namespace Trabalho_AEDS_2024
             array[0] = x;
             n++;
         }
-        public void inserirFim(Jogador x)
+        public void inserirFim(Carta x)
         {
             if (n >= array.Length)
                 throw new Exception("Lista está cheia!");
             array[n] = x;
             n++;
         }
-        public void inserir(Jogador x, int pos)
+        public void inserir(Carta x, int pos)
         {
             if (n >= array.Length || pos < 0 || pos > n)
                 throw new Exception("Index incorreto!");
@@ -54,11 +54,11 @@ namespace Trabalho_AEDS_2024
             array[pos] = x;
             n++;
         }
-        public Jogador removerInicio()
+        public Carta removerInicio()
         {
             if (n == 0)
                 throw new Exception("Erro!");
-            Jogador resp = array[0];
+            Carta resp = array[0];
             n--;
             for (int i = 0; i < n; i++)
             {
@@ -67,24 +67,31 @@ namespace Trabalho_AEDS_2024
 
             return resp;
         }
-        public Jogador removerFim()
+        public Carta removerFim()
         {
             if (n == 0)
                 throw new Exception("Erro!");
             n = n - 1;
             return array[n];
         }
-        public Jogador remover(int pos)
+        public Carta remover(int pos)
         {
             if (n == 0 || pos < 0 || pos >= n)
                 throw new Exception("Erro!");
-            Jogador resp = array[pos];
+            Carta resp = array[pos];
             n--;
             for (int i = pos; i < n; i++)
             {
                 array[i] = array[i + 1];
             }
             return resp;
+        }
+        public Carta ElementoEm(int index)
+        {
+            if (index < 0 || index >= n)
+                throw new Exception("Index inválido!");
+
+            return array[index];
         }
         public void mostrar()
         {

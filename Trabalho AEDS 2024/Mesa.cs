@@ -8,10 +8,10 @@ namespace Trabalho_AEDS_2024
 {
     internal class Mesa
     {
-        List<Carta> monteDeCompras;
+        ListaLinear monteDeCompras;
         List<Carta> areaDeDescarte = new List<Carta>();
 
-        public List<Carta> MonteDeCompras
+        public ListaLinear MonteDeCompras
         {
             get => monteDeCompras;
             set => monteDeCompras = value;
@@ -23,14 +23,14 @@ namespace Trabalho_AEDS_2024
         }
         public Mesa()
         {
-            monteDeCompras = new List<Carta>(Program.baralhos.Count*52);
+            monteDeCompras = new ListaLinear(Program.baralhos.Count * 52);
 
             for (int i = 0; i < Program.baralhos.Count; i++)
             {
                 Baralho.AleatorizarBaralho(Program.baralhos[i]);
                 for (int j = 0; j < Program.baralhos[i].Length; j++)
                 {
-                    monteDeCompras.Add(Program.baralhos[i][j]);
+                    monteDeCompras.inserirInicio(Program.baralhos[i][j]);
                 }
             }
 
@@ -41,7 +41,7 @@ namespace Trabalho_AEDS_2024
         {
             for (int i = 0; i < monteDeCompras.Count; i++)
             {
-                Console.WriteLine($"{monteDeCompras[i].Naipe}-{monteDeCompras[i].Numero}");
+                Console.WriteLine($"{monteDeCompras.ElementoEm(i).Naipe}-{monteDeCompras.ElementoEm(i).Numero}");
             }
         }
     }

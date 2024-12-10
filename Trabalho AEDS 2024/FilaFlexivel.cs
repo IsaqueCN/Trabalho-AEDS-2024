@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace Trabalho_AEDS_2024
 {
@@ -34,7 +33,7 @@ namespace Trabalho_AEDS_2024
     }
     internal class FilaFlexivel
     {
-        private Celula primeiro,ultimo;
+        private Celula primeiro, ultimo;
         private int count = 0;
         public int Count => count;
         public FilaFlexivel()
@@ -42,14 +41,16 @@ namespace Trabalho_AEDS_2024
             primeiro = new Celula();
             ultimo = primeiro;
         }
-        public void Inserir(int x) {
+        public void Inserir(int x)
+        {
             ultimo.Prox = new Celula(x);
             ultimo = ultimo.Prox;
             count++;
         }
-        public int Remover() {
+        public int Remover()
+        {
             if (primeiro == ultimo)
-                throw new Exception("Erro!"); 
+                throw new Exception("Erro!");
 
             Celula tmp = primeiro;
             primeiro = primeiro.Prox;
@@ -59,7 +60,8 @@ namespace Trabalho_AEDS_2024
             count--;
             return elemento;
         }
-        public void Mostrar() {
+        public void Mostrar()
+        {
             Console.Write("[");
             for (Celula i = primeiro.Prox; i != null; i = i.Prox)
             {
